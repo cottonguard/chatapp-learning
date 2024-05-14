@@ -1,0 +1,21 @@
+[package]
+name = "web1"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = ["migration"]
+
+[dependencies]
+migration = { path = "./migration" }
+
+axum = { version = "*", features = ["http2"] }
+tokio = { version = "*", features = ["rt", "rt-multi-thread", "macros"] }
+serde = { version = "*", features = ["derive"] }
+tower = "*"
+tower-http = { version = "*", features = ["cors", "trace"] }
+tracing-subscriber = "*"
+sea-orm = { version = "*", features = ["sqlx-sqlite", "runtime-tokio-native-tls", "macros"] }
+anyhow = "*"
